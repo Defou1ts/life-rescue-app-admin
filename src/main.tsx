@@ -12,9 +12,9 @@ import { defaultAdminPath } from "./config/adminNav.ts";
 import AdminLayout from "./layouts/AdminLayout.tsx";
 import AllergysPage from "./pages/admin/allergys/AllergysPage.tsx";
 import AccountsPage from "./pages/admin/AccountsPage.tsx";
-import DiseasesPage from "./pages/admin/DiseasesPage.tsx";
+import DiseasesPage from "./pages/admin/diseases/DiseasesPage.tsx";
 import EmergencyPage from "./pages/admin/EmergencyPage.tsx";
-import KycPage from "./pages/admin/KycPage.tsx";
+import KycPage from "./pages/admin/kyc/KycPage.tsx";
 import ProfilePage from "./pages/admin/ProfilePage.tsx";
 import SymptomsPage from "./pages/admin/SymptomsPage.tsx";
 
