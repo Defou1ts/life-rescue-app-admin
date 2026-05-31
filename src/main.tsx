@@ -10,7 +10,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./config/queryClient.ts";
 import { defaultAdminPath } from "./config/adminNav.ts";
 import AdminLayout from "./layouts/AdminLayout.tsx";
-import AllergysPage from "./pages/admin/AllergysPage.tsx";
+import AllergysPage from "./pages/admin/allergys/AllergysPage.tsx";
 import AccountsPage from "./pages/admin/AccountsPage.tsx";
 import DiseasesPage from "./pages/admin/DiseasesPage.tsx";
 import EmergencyPage from "./pages/admin/EmergencyPage.tsx";
