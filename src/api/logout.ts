@@ -1,46 +1,19 @@
 import { axiosInstance } from "@/api/axiosInstance";
 import { queryClient } from "@/config/queryClient";
-import { router } from "expo-router";
-import * as SecureStore from "expo-secure-store";
+import { tokenStorage } from "@/store/tokenStorage";
 
 export const logout = async () => {
   try {
-    /**
-     * GET REFRESH TOKEN
-     */
-    const refreshToken = await SecureStore.getItemAsync("refresh_token");
+    const refreshToken = tokenStorage.getRefreshToken();
 
-    /**
-     * BACKEND LOGOUT
-     */
     if (refreshToken) {
-      await axiosInstance.post("/auth/logout", {
-        refreshToken,
-      });
+      await axiosInstance.post("/auth/logout", { refreshToken });
     }
   } catch (e) {
-    console.log("LOGOUT_REQUEST_ERROR", e);
+    console.error("LOGOUT_REQUEST_ERROR", e);
   } finally {
-    /**
-     * CLEAR TOKENS
-     */
-    await SecureStore.deleteItemAsync("access_token");
-
-    await SecureStore.deleteItemAsync("refresh_token");
-
-    /**
-     * CLEAR AXIOS AUTH HEADER
-     */
+    tokenStorage.clearTokens();
     delete axiosInstance.defaults.headers.common.Authorization;
-
-    /**
-     * CLEAR REACT QUERY CACHE
-     */
     queryClient.clear();
-
-    /**
-     * REDIRECT
-     */
-    router.replace("/signIn");
   }
 };

@@ -1,6 +1,9 @@
+import { useLogout } from "@/api/hooks/useLogout";
 import { adminNavItems } from "@/config/adminNav";
+import LogoutIcon from "@mui/icons-material/Logout";
 import {
   Box,
+  Button,
   Drawer,
   List,
   ListItemButton,
@@ -13,6 +16,8 @@ import { NavLink, Outlet } from "react-router";
 const drawerWidth = 240;
 
 export default function AdminLayout() {
+  const { mutate: logout, isPending: isLoggingOut } = useLogout();
+
   return (
     <Box sx={{ display: "flex", minHeight: "100vh" }}>
       <Drawer
@@ -23,6 +28,8 @@ export default function AdminLayout() {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
+            display: "flex",
+            flexDirection: "column",
           },
         }}
       >
@@ -31,7 +38,7 @@ export default function AdminLayout() {
             Life Rescue Admin
           </Typography>
         </Toolbar>
-        <List component="nav" disablePadding>
+        <List component="nav" disablePadding sx={{ flex: 1 }}>
           {adminNavItems.map((item) => (
             <ListItemButton
               key={item.path}
@@ -47,6 +54,18 @@ export default function AdminLayout() {
             </ListItemButton>
           ))}
         </List>
+        <Box sx={{ p: 2 }}>
+          <Button
+            fullWidth
+            variant="outlined"
+            color="inherit"
+            startIcon={<LogoutIcon />}
+            disabled={isLoggingOut}
+            onClick={() => logout()}
+          >
+            Logout
+          </Button>
+        </Box>
       </Drawer>
       <Box
         component="main"
