@@ -15,7 +15,7 @@ import AccountsPage from "./pages/admin/accounts/AccountsPage.tsx";
 import DiseasesPage from "./pages/admin/diseases/DiseasesPage.tsx";
 import EmergencyPage from "./pages/admin/emergency/EmergencyPage.tsx";
 import KycPage from "./pages/admin/kyc/KycPage.tsx";
-import ProfilePage from "./pages/admin/ProfilePage.tsx";
+import ProfilePage from "./pages/admin/profile/ProfilePage.tsx";
 import SymptomsPage from "./pages/admin/SymptomsPage.tsx";
 
 const theme = createTheme();
