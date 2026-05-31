@@ -1,3 +1,4 @@
+import { defaultAdminPath } from "@/config/adminNav";
 import { tokenStorage } from "@/store/tokenStorage";
 import { useMutation } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
@@ -47,7 +48,7 @@ export const useSignIn = () => {
 
         tokenStorage.setTokens(access_token, refresh_token);
 
-        navigate("/dashboard", { replace: true });
+        navigate(defaultAdminPath, { replace: true });
       }
     },
   });
