@@ -1,8 +1,11 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from "axios";
 import { tokenStorage } from "../store/tokenStorage";
 
+const apiBaseUrl =
+  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:5033/api";
+
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5033/api",
+  baseURL: apiBaseUrl,
 });
 
 type FailedRequest = {
@@ -68,12 +71,9 @@ axiosInstance.interceptors.response.use(
           throw new Error("No refresh token");
         }
 
-        const response = await axios.post(
-          "http://localhost:5033/api/auth/refresh",
-          {
-            refreshToken,
-          },
-        );
+        const response = await axios.post(`${apiBaseUrl}/auth/refresh`, {
+          refreshToken,
+        });
 
         const { access_token, refresh_token } = response.data;
 
