@@ -4,7 +4,7 @@ export type AdminNavItem = {
 };
 
 export const adminNavItems: AdminNavItem[] = [
-  { label: "Allergys", path: "/allergys" },
+  { label: "Allergies", path: "/allergys" },
   { label: "Accounts", path: "/accounts" },
   { label: "Diseases", path: "/diseases" },
   { label: "Emergency", path: "/emergency" },

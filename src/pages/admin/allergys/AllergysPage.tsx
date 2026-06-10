@@ -64,7 +64,7 @@ export default function AllergysPage() {
         }}
       >
         <Typography variant="h4" component="h1" fontWeight={600}>
-          Allergys
+          Allergies
         </Typography>
         <Button variant="contained" onClick={openCreate}>
           Add allergy
@@ -72,7 +72,11 @@ export default function AllergysPage() {
       </Box>
 
       {isError && (
-        <Alert severity="error" sx={{ mb: 2 }} action={<Button onClick={() => refetch()}>Retry</Button>}>
+        <Alert
+          severity="error"
+          sx={{ mb: 2 }}
+          action={<Button onClick={() => refetch()}>Retry</Button>}
+        >
           Failed to load allergies.
         </Alert>
       )}
